@@ -68,27 +68,32 @@ public class InputController : MonoBehaviour {
 	{
 		if (Input.touchCount == 0) return;
 
-		var touch = Input.GetTouch(0);
+//		var touch = Input.GetTouch(0);
 
-		if (TouchPhase.Began == touch.phase)
-		{
-            var worldPos = touch.position.ToWorldPos(); //ToWorldPos(touch.position);
-            m_DownPosition = worldPos;
-            if (OnTouchDown != null) OnTouchDown(worldPos);
-		}
-		else if (TouchPhase.Moved == touch.phase)
-		{
-            var worldPos = touch.position.ToWorldPos();// ToWorldPos(touch.position);
+		foreach (var touch in Input.touches) {
+		
+			if (TouchPhase.Began == touch.phase)
+			{
+				var worldPos = touch.position.ToWorldPos(); //ToWorldPos(touch.position);
+				m_DownPosition = worldPos;
+				if (OnTouchDown != null) OnTouchDown(worldPos);
+			}
+			else if (TouchPhase.Moved == touch.phase)
+			{
+				var worldPos = touch.position.ToWorldPos();// ToWorldPos(touch.position);
 
-			if (OnTouchMoved != null) OnTouchMoved(worldPos);
-		}
-		else if (TouchPhase.Stationary == touch.phase)
-		{
+				if (OnTouchMoved != null) OnTouchMoved(worldPos);
+			}
+			else if (TouchPhase.Stationary == touch.phase)
+			{
 
+			}
+			else if(TouchPhase.Ended == touch.phase || TouchPhase.Canceled == touch.phase)
+			{
+				if (OnTouchUp != null) OnTouchUp(touch.position.ToWorldPos()/*ToWorldPos(touch.position)*/);
+			}
 		}
-		else if(TouchPhase.Ended == touch.phase || TouchPhase.Canceled == touch.phase)
-		{
-			if (OnTouchUp != null) OnTouchUp(touch.position.ToWorldPos()/*ToWorldPos(touch.position)*/);
-		}
+
+
 	}
 }
