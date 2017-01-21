@@ -10,8 +10,14 @@ public class PlayerInput : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+
+        inputController.OnTouchDown += SplitTouches;
 	}
+
+    void OnDestroy(){
+
+        if(inputController != null) inputController.OnTouchDown -= SplitTouches;
+    }
 
     void SplitTouches(Vector3 touches){
 

@@ -60,13 +60,26 @@ public static class VectorExtensions {
 		return Quaternion.AngleAxis(rotationAngle, new Vector3(0, 0, 1));
 	}
 
-	public static Vector3 Rotate(this Vector2 v, float angle)
-	{
+    public static Quaternion ToRotation(this Vector3 v)
+    {
+        float rotationAngle = Vector2.Angle(v, Vector3.right);
+        rotationAngle = v.y < 0 ? rotationAngle * -1 : rotationAngle;
+        return Quaternion.AngleAxis(rotationAngle, new Vector3(0, 0, 1));
+    }
 
+    public static Vector3 Rotate(this Vector2 v, float angle)
+	{
 		Quaternion quat = Quaternion.AngleAxis(angle, new Vector3(0, 0, 1));
 
 		return quat * v;
 	}
+
+    public static Vector3 Rotate(this Vector3 v, Vector3 rotationAngle, float angle)
+    {
+        Quaternion quat = Quaternion.AngleAxis(angle, rotationAngle);
+
+        return quat * v;
+    }
 
 	public static float ClockwiseAngle(this Vector2 from, Vector2 to)
 	{
