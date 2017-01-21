@@ -23,6 +23,9 @@ public class TowerHealth : MonoBehaviour {
 
         if (!other.CompareTag(Tags.Bullet)) return;
 
+		var bulletComp = other.GetComponent<Bullet> ();
+		bulletComp.TriggerExplosion ();
+
         heartImages[_currentLife].color = heartImages[_currentLife].color.NewColor(0.2f);
         _currentLife--;
 

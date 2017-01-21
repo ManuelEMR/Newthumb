@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
+	public GameObject vfxObj;
+	public MeshRenderer meshRenderer;
+
     Rigidbody _rigidbody;
 
 	// Use this for initialization
@@ -16,4 +19,11 @@ public class Bullet : MonoBehaviour {
 
         transform.rotation = _rigidbody.velocity.Rotate(Vector3.forward, 90).ToRotation();
     }
+
+	public void TriggerExplosion(){
+	
+		vfxObj.SetActive (true);
+		meshRenderer.enabled = false;
+		_rigidbody.velocity = Vector3.zero;
+	}
 }
