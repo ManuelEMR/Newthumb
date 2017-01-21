@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
@@ -11,6 +11,8 @@ public class TowerShooting : MonoBehaviour {
 	public GameObject bullet01;
 	public GameObject bullet02;
 
+    public float firingRate;
+
 	private float speed = 200;
 
 	void Start() {
@@ -19,7 +21,7 @@ public class TowerShooting : MonoBehaviour {
 
 	private IEnumerator BulletGenerator() {
 		while (true) {
-			yield return new WaitForSeconds (0.75f);
+			yield return new WaitForSeconds (firingRate);
 
 			GameObject Temporary_Bullet_Handler01;
 			Temporary_Bullet_Handler01 = Instantiate (bullet01, bullet_emitter01.transform.position, bullet_emitter01.transform.rotation) as GameObject;
