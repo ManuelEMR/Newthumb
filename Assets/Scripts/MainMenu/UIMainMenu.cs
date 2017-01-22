@@ -15,4 +15,14 @@ public class UIMainMenu : MonoBehaviour {
 		//Level 1
 		SceneManager.LoadScene (1);
 	}
+
+	public void LoadMainMenu(){
+
+		SceneManager.LoadScene (0);
+	}
+
+	public void LoadCredits(){
+
+		SceneManager.LoadScene (2);
+	}
 }
