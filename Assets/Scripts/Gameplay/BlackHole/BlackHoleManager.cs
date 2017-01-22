@@ -5,6 +5,8 @@ using UnityEngine;
 public class BlackHoleManager : MonoBehaviour {
 
     public GameObject blackHolePrefab;
+	public AudioClip touchSound;
+	public AudioSource audioManager;
 
     private GameObject _playerOneBlackHole;
     private GameObject _playerTwoBlackHole;
@@ -34,6 +36,8 @@ public class BlackHoleManager : MonoBehaviour {
 
         _playerOneBlackHole.SetActive(true);
         _playerOneBlackHole.transform.position = position;
+
+		audioManager.PlayOneShot (touchSound);
     }
 
     void PlacePlayerTwoBlackHole(Vector3 position){
@@ -42,5 +46,7 @@ public class BlackHoleManager : MonoBehaviour {
 
         _playerTwoBlackHole.SetActive(true);
         _playerTwoBlackHole.transform.position = position;
+
+		audioManager.PlayOneShot (touchSound);
     }
 }
