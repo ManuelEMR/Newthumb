@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class TowerHealth : MonoBehaviour {
 
@@ -33,7 +32,7 @@ public class TowerHealth : MonoBehaviour {
         if(_currentLife == 0){
             if (OnTowerDestroyed != null) OnTowerDestroyed(playerNumber);
 
-			SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
+//			SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
         }
     }
 }
