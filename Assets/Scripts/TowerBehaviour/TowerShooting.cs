@@ -26,13 +26,15 @@ public class TowerShooting : MonoBehaviour {
 			speed = Mathf.Clamp (speed, 200, 300);
 
 			GameObject Temporary_Bullet_Handler01;
-			Temporary_Bullet_Handler01 = Instantiate (bullet01, bullet_emitter01.transform.position, bullet_emitter01.transform.rotation) as GameObject;
+			Temporary_Bullet_Handler01 = Instantiate (bullet01, bullet_emitter01.transform.position,
+				bullet_emitter01.transform.up.Rotate(Vector3.forward, -90).ToRotation()) as GameObject;
 			Rigidbody temporary_Rigidbody01 = Temporary_Bullet_Handler01.GetComponent<Rigidbody> ();
 			temporary_Rigidbody01.AddForce (bullet_emitter01.transform.up * speed);
 			Destroy (Temporary_Bullet_Handler01, 15.0f);
 
 			GameObject Temporary_Bullet_Handler02;
-			Temporary_Bullet_Handler02 = Instantiate (bullet02, bullet_emitter02.transform.position, bullet_emitter02.transform.rotation) as GameObject;
+			Temporary_Bullet_Handler02 = Instantiate (bullet02, bullet_emitter02.transform.position,
+				bullet_emitter02.transform.up.Rotate(Vector3.forward, -90).ToRotation()) as GameObject;
 			Rigidbody temporary_Rigidbody02 = Temporary_Bullet_Handler02.GetComponent<Rigidbody> ();
 			temporary_Rigidbody02.AddForce (bullet_emitter02.transform.up * speed);
 			Destroy (Temporary_Bullet_Handler02, 15.0f);

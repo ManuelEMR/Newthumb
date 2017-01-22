@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour {
 
 	public GameObject vfxObj;
-	public MeshRenderer meshRenderer;
+	public Renderer mRenderer;
 
     Rigidbody _rigidbody;
 
@@ -17,13 +17,13 @@ public class Bullet : MonoBehaviour {
 
     void FixedUpdate(){
 
-        transform.rotation = _rigidbody.velocity.Rotate(Vector3.forward, 90).ToRotation();
+        transform.rotation = _rigidbody.velocity.Rotate(Vector3.forward, -90).ToRotation();
     }
 
 	public void TriggerExplosion(){
 	
 		vfxObj.SetActive (true);
-		meshRenderer.enabled = false;
+		mRenderer.enabled = false;
 		_rigidbody.velocity = Vector3.zero;
 	}
 }
