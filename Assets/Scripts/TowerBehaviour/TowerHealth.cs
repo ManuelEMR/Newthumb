@@ -17,7 +17,7 @@ public class TowerHealth : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        _currentLife = heartImages.Length - 1;
+        _currentLife = heartImages.Length;
 	}
 
     void OnTriggerEnter(Collider other){
@@ -27,7 +27,7 @@ public class TowerHealth : MonoBehaviour {
 		var bulletComp = other.GetComponent<Bullet> ();
 		bulletComp.TriggerExplosion ();
 
-        heartImages[_currentLife].color = heartImages[_currentLife].color.NewColor(0.2f);
+        heartImages[_currentLife - 1].color = heartImages[_currentLife - 1].color.NewColor(0.2f);
         _currentLife--;
 
         if(_currentLife == 0){
